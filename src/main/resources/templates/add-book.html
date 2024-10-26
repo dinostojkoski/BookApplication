@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css">
+  <link rel="shortcut icon" href="https://cdn-icons-png.flaticon.com/512/7078/7078214.png">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
+  <meta charset="UTF-8">
+  <title>Add Book</title>
+</head>
+
+<style>
+  * {
+    font-family: "Raleway", sans-serif;
+  }
+
+  .navbar {
+    padding: 1rem;
+  }
+
+  .navbar-brand {
+    margin-left: 1rem;
+    font-size: 1.6rem;
+  }
+
+  .nav-link {
+    margin-top: 0.2rem;
+    font-size: 1.2rem;
+  }
+
+  .nav-item {
+    margin-left: 2rem;
+  }
+
+  #left-column {
+    padding: 20px;
+    background-color: white;
+    height: 90vh;
+    overflow-y: auto;
+  }
+
+  #right-column {
+    background-image: url('https://images.unsplash.com/photo-1585521747230-516376e5a85d?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');
+    background-color: #f5f5f5;
+    height: 90vh;
+    padding: 20px;
+    overflow-y: auto;
+    background-size: cover;
+    background-position: center;
+  }
+</style>
+
+<body>
+
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+
+    <a class="navbar-brand" href="/">Book Inventory</a>
+
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+
+        <li class="nav-item active">
+          <a class="nav-link" href="/add-book">Add Book <span class="sr-only">(current)</span></a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link" href="/show-books">Show Books</a>
+        </li>
+      </ul>
+    </div>
+
+    <form class="form-inline my-2 my-lg-0">
+      <a th:href="@{/logout}" class="btn btn-danger my-2 my-sm-0">Logout</a>
+    </form>
+  </nav>
+
+
+  <div class="container-fluid">
+    <div class="row">
+
+      <div class="col-md-6 p-5" id="left-column">
+        <h2 class="mb-5">Add a New Book</h2>
+
+        <form th:action="@{/add-book}" th:object="${book}" method="post" style="width: 75%;">
+          <input type="hidden" th:field="*{id}"/> <!-- Hidden field for the book ID -->
+          <div class="form-group mb-3">
+            <label for="title" class="form-label">Title</label>
+            <input id="title" type="text" class="form-control" th:field="*{title}" required>
+          </div>
+
+          <div class="form-group mb-3">
+            <label for="author" class="form-label">Author</label>
+            <input id="author" type="text" class="form-control" th:field="*{author}" required>
+          </div>
+
+          <div class="form-group mb-3">
+            <label for="rating" class="form-label">Rating</label>
+            <input id="rating" type="number" class="form-control" th:field="*{rating}" min="1" max="10" required>
+          </div>
+
+          <div class="form-group mb-3">
+            <label for="summary" class="form-label">Summary</label>
+            <textarea id="summary" class="form-control" th:field="*{summary}" required></textarea>
+          </div>
+
+          <button type="submit" class="ml-2 btn btn-outline-primary">Save</button>
+        </form>
+      </div>
+
+      <div class="col-md-6" id="right-column"></div>
+
+    </div>
+
+  </div>
+
+</body>
+
+</html>

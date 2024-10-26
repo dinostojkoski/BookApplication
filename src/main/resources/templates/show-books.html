@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+  <title>Book List</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+</head>
+
+<style>
+  * {
+    font-family: "Raleway", sans-serif;
+  }
+
+  .navbar {
+    padding: 1rem;
+  }
+
+  .navbar-brand {
+    margin-left: 1rem;
+    font-size: 1.6rem;
+  }
+
+  .nav-link {
+    margin-top: 0.2rem;
+    font-size: 1.2rem;
+  }
+
+  .nav-item {
+    margin-left: 2rem;
+  }
+</style>
+
+<body>
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" href="/">Book Inventory</a>
+
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item active">
+          <a class="nav-link" href="/add-book">Add Book <span class="sr-only">(current)</span></a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link" href="/show-books">Show Books</a>
+        </li>
+      </ul>
+    </div>
+
+    <form class="form-inline my-2 my-lg-0">
+      <a th:href="@{/logout}" class="btn btn-danger my-2 my-sm-0">Logout</a>
+    </form>
+  </nav>
+
+  <div class="container mt-5">
+    <!-- Search Bar -->
+    <div class="row">
+      <div class="col-md-8"><h2>My Books</h2></div>
+      <div class="col-md-4">
+        <form th:action="@{/search}" method="get" class="d-flex" role="search">
+          <input name="query" class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+          <button class="ml-2 btn btn-outline-primary" type="submit">Search</button>
+        </form>
+      </div>
+    </div>
+
+    <!-- Search Results Section -->
+    <div class="row mt-5">
+      <div th:if="${#lists.isEmpty(books)}" class="col-md-12">
+        <p>No books found.</p>
+      </div>
+
+      <div th:if="${!#lists.isEmpty(books)}" class="col-md-12">
+        <h3>Search Results:</h3>
+      </div>
+
+      <!-- Display each book as a card -->
+      <div class="col-md-4" th:each="book : ${books}">
+        <div class="card mb-3">
+          <div class="card-body">
+            <h5 class="card-title" th:text="${book.title}"></h5>
+            <h6 class="card-subtitle mb-2 text-muted" th:text="${book.author}"></h6>
+            <p class="card-text text-justify" th:text="${book.summary}"></p>
+            <p class="card-text"><small>Rating: <span th:text="${book.rating}"></span></small></p>
+            <a th:href="@{/edit-book/{id}(id=${book.id})}" class="btn btn-light">Edit</a>
+            <a th:href="@{/delete-book/{id}(id=${book.id})}" class="btn btn-danger">Delete</a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+</body>
+</html>

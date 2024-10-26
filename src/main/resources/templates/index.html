@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css">
+    <link rel="shortcut icon" href="https://cdn-icons-png.flaticon.com/512/7078/7078214.png">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
+    <meta charset="UTF-8">
+    <title>Book Inventory</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter&family=Raleway&display=swap" rel="stylesheet">
+</head>
+
+<style>
+    * {
+        font-family: "Raleway", sans-serif;
+    }
+
+    .navbar {
+        padding: 1rem;
+    }
+
+    .navbar-brand {
+        margin-left: 1rem;
+        font-size: 1.6rem;
+    }
+
+    .nav-link {
+        margin-top: 0.2rem;
+        font-size: 1.2rem;
+    }
+
+    .nav-item {
+        margin-left: 2rem;
+    }
+
+    #left-column {
+        background-image: url('https://images.unsplash.com/photo-1585521549926-ca6526bda09e?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');
+        background-color: #f5f5f5;
+        height: 90vh;
+        padding: 20px;
+        overflow-y: auto;
+        background-size: cover;
+        background-position: center;
+    }
+
+    #right-column {
+        padding: 20px;
+        background-color: white;
+        height: 90vh;
+        overflow-y: auto;
+    }
+</style>
+
+<body>
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+
+    <a class="navbar-brand" href="/">Book Inventory</a>
+
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+                <a class="nav-link" href="/add-book">Add Book <span class="sr-only">(current)</span></a>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link" href="/show-books">Show Books</a>
+            </li>
+        </ul>
+    </div>
+
+    <form class="form-inline my-2 my-lg-0">
+        <a th:href="@{/logout}" class="btn btn-danger my-2 my-sm-0">Logout</a>
+    </form>
+</nav>
+
+<main class="container-fluid">
+    <div class="row">
+        <div class="col-md-6 p-0" id="left-column">
+        </div>
+        <div class="col-md-6" id="right-column">
+            <div class="p-5 text text-center mt-2">
+
+                <div class="container mt-5">
+                    <h1>Welcome to Your Personal Book Inventory!</h1>
+                </div>
+
+                <figure class="mt-5">
+                    <blockquote class="blockquote">
+                        <p>As you read a book word by word and page by page, you participate in its creation,
+                            just as a cellist playing a Bach suite participates, note by note, in the creation,
+                            the coming-to-be, the existence, of the music. And, as you read and re-read,
+                            the book of course participates in the creation of you, your thoughts and feelings,
+                            the size and temper of your soul.</p>
+                    </blockquote>
+                    <br>
+                    <figcaption class="blockquote-footer">
+                        <cite title="Source Title">Ursula K. Le Guin</cite>
+                    </figcaption>
+                </figure>
+
+            </div>
+        </div>
+    </div>
+</main>
+
+</body>
+
+</html>
