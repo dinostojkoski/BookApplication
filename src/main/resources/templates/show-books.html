@@ -72,22 +72,8 @@
         <p>No books found.</p>
       </div>
 
-      <div th:if="${!#lists.isEmpty(books)}" class="col-md-12">
+     <!-- <div th:if="${books != null and !#lists.isEmpty(books)}" class="col-md-12">
         <h3>Search Results:</h3>
-      </div>
-
-      <!-- Display each book as a card -->
-      <!--<div class="col-md-4" th:each="book : ${books}">
-        <div class="card mb-3">
-          <div class="card-body">
-            <h5 class="card-title" th:text="${book.title}"></h5>
-            <h6 class="card-subtitle mb-2 text-muted" th:text="${book.author}"></h6>
-            <p class="card-text text-justify" th:text="${book.summary}"></p>
-            <p class="card-text"><small>Rating: <span th:text="${book.rating}"></span></small></p>
-            <a th:href="@{/edit-book/{id}(id=${book.id})}" class="btn btn-light">Edit</a>
-            <a th:href="@{/delete-book/{id}(id=${book.id})}" class="btn btn-danger">Delete</a>
-          </div>
-        </div>
       </div>-->
 
       <div class="col-md-12" th:each="book : ${books}">
@@ -102,9 +88,7 @@
         </div>
       </div>
       </div>
-
     </div>
-
   </div>
 
 </body>
